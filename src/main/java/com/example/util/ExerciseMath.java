@@ -1,4 +1,4 @@
-package com.example;
+package com.example.util;
 
 public class ExerciseMath {
 	public static int factorial(int args) {
