@@ -48,6 +48,7 @@ tasks.named('test') {
 }
 
 tasks.withType(Checkstyle) {
-    // チェックスタイルのバージョンが変更された場合は、ここで指定されているバージョンも更新してください。
+    configFile = file("${project.rootDir}/checkstyle.xml")
+    configProperties = ["checkstyle.cache.file": file("${project.buildDir}/checkstyle.cache")]
     classpath = configurations.checkstyle
 }
