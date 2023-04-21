@@ -8,6 +8,6 @@ jobs:
       - uses: actions/checkout@v3
       - uses: dbelyaev/action-checkstyle@v0.7.4
         with:
-          github_token: ${{ secrets.GITHUBACTIONS_TOKEN2 }}
+          github_token: ${{ secrets.MY_GITHUB_TOKEN }}
           reporter: github-pr-review
           level: warning
