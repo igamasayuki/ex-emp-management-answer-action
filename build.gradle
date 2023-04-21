@@ -10,6 +10,9 @@ checkstyle {
     toolVersion = '9.1' 
     configFile = file("${project.rootDir}/checkstyle.xml") // checkstyle.xmlのパスを指定してください。
 }
+configurations {
+    checkstyle
+}
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
@@ -37,8 +40,14 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
   	// 以下の1行を追加する(SpringBoot内のtomcatを使うのではなく提供されているTomcatを使う設定)
   	providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+  	checkstyle 'com.puppycrawl.tools:checkstyle:9.1'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+tasks.withType(Checkstyle) {
+    // チェックスタイルのバージョンが変更された場合は、ここで指定されているバージョンも更新してください。
+    classpath = configurations.checkstyle
 }
