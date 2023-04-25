@@ -75,11 +75,9 @@ public class AdministratorRepository {
 	 * @param administrator 管理者情報
 	 */
 	public void insert(Administrator administrator) 
-	{
-	SqlParameterSource param = new BeanPropertySqlParameterSource(administrator);
+	{SqlParameterSource param = new BeanPropertySqlParameterSource(administrator);
 		String sql = "insert into administrators(name,mail_address,password)values(:name,:mailAddress,:password);";
-		template.update(sql, param);
-	}
+		template.update(sql, param);}
 
 	/**
 	 * メールアドレスから管理者情報を取得します.
