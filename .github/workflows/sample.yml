@@ -1,5 +1,5 @@
 name: reviewdog
-on: [pull_request]
+on: push
 jobs:
   checkstyle:
     name: runner / checkstyle
@@ -11,5 +11,3 @@ jobs:
           github_token: ${{ secrets.MY_GITHUB_TOKEN }}
           reporter: github-pr-review
           level: warning
-
-          
