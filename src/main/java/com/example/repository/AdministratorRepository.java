@@ -44,7 +44,7 @@ public class AdministratorRepository {
 	 * @throws EmptyDataAccessException 存在しない場合は例外を発生します
 	 */
 	public Administrator load(Integer id) {
-		String sql = "select id,name,mail_address,password from administrators where id=:id";
+			String sql = "select id,name,mail_address,password from administrators where id=:id";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("id", id);
 		Administrator administrator = template.queryForObject(sql, param, ADMINISTRATOR_ROW_MAPPER);
 		return administrator;
@@ -62,7 +62,8 @@ public class AdministratorRepository {
 		SqlParameterSource param = new MapSqlParameterSource().addValue("mailAddress", mailAddress).addValue("password",
 				password);
 		List<Administrator> administratorList = template.query(sql, param, ADMINISTRATOR_ROW_MAPPER);
-		if (administratorList.size() == 0) {
+		if (administratorList.size() == 0) 
+		{
 			return null;
 		}
 		return administratorList.get(0);
@@ -73,8 +74,9 @@ public class AdministratorRepository {
 	 * 
 	 * @param administrator 管理者情報
 	 */
-	public void insert(Administrator administrator) {
-		SqlParameterSource param = new BeanPropertySqlParameterSource(administrator);
+	public void insert(Administrator administrator) 
+	{
+	SqlParameterSource param = new BeanPropertySqlParameterSource(administrator);
 		String sql = "insert into administrators(name,mail_address,password)values(:name,:mailAddress,:password);";
 		template.update(sql, param);
 	}
